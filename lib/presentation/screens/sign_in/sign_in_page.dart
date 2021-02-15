@@ -64,7 +64,7 @@ class SignInPage extends StatelessWidget {
                 ),
                 SizedBox(
                   height: SizeConfig.safeBlockVertical * 160,
-                  child: SignInFormBlocP(),
+                  child: SignInForm(),
                 ),
               ],
             ),
@@ -162,43 +162,29 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
             ),
-            BlocConsumer<SignInFormBloc, SignInFormState>(
-              listener: (context, state) {},
-              builder: (context, state) {
-                return GestureDetector(
-                  onTap: () {
-                    context.read<SignInFormBloc>().add(
-                          const SignInFormEvent
-                              .signInWithEmailAndPasswordPressed(),
-                        );
-                    print("pressed");
-                  },
-                  child: Container(
-                    color: kButtonColor,
-                    width: double.maxFinite,
-                    height: SizeConfig.safeBlockVertical * 70,
-                    alignment: Alignment.center,
-                    child: Text(
-                      "SIGN IN",
-                      style: GoogleFonts.quicksand(
-                        textStyle: kButtonTextStyle,
-                      ),
-                    ),
-                  ),
-                );
+            GestureDetector(
+              onTap: () {
+                context.read<SignInFormBloc>().add(
+                      const SignInFormEvent.signInWithEmailAndPasswordPressed(),
+                    );
+                // print("pressed");
               },
+              child: Container(
+                color: kButtonColor,
+                width: double.maxFinite,
+                height: SizeConfig.safeBlockVertical * 70,
+                alignment: Alignment.center,
+                child: Text(
+                  "SIGN IN",
+                  style: GoogleFonts.quicksand(
+                    textStyle: kButtonTextStyle,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
       ),
     );
-  }
-}
-
-class MyBehavior extends ScrollBehavior {
-  @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
-    return child;
   }
 }
