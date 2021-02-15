@@ -8,6 +8,16 @@ import 'package:to_do/shared/color_constants.dart';
 import 'package:to_do/shared/sizeconfig.dart';
 import 'widgets/sign_up_form.dart';
 
+class SignUpPageBlocProvider extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<SignInFormBloc>(),
+      child: SignUpPage(),
+    );
+  }
+}
+
 class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,14 +31,14 @@ class SignUpPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AppBar(
-                leading: IconButton(
-                  icon: const Icon(
-                    Icons.arrow_back_ios_rounded,
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
+                // leading: IconButton(
+                //   icon: const Icon(
+                //     Icons.arrow_back_ios_rounded,
+                //   ),
+                //   onPressed: () {
+                //     Navigator.pop(context);
+                //   },
+                // ),
                 brightness: Brightness.dark,
                 centerTitle: true,
                 title: Text(
@@ -55,7 +65,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: SizeConfig.safeBlockVertical * 30,
+                  height: SizeConfig.safeBlockVertical * 5,
                 ),
                 Text(
                   'REGISTER WITH EMAIL ADDRESS',
@@ -65,10 +75,10 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: SizeConfig.safeBlockVertical * 30,
+                  height: SizeConfig.safeBlockVertical * 20,
                 ),
-                BlocProvider(
-                  create: (context) => getIt<SignInFormBloc>(),
+                SizedBox(
+                  height: SizeConfig.safeBlockVertical * 250,
                   child: SignUpForm(),
                 ),
               ],
@@ -109,7 +119,7 @@ class SignUpPage extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: SizeConfig.safeBlockVertical * 30,
+              height: SizeConfig.safeBlockVertical * 20,
             ),
             // Container(
             //   height: 75,
@@ -167,10 +177,10 @@ class SignUpPage extends StatelessWidget {
   }
 }
 
-class MyBehavior extends ScrollBehavior {
-  @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
-    return child;
-  }
-}
+// class MyBehavior extends ScrollBehavior {
+//   @override
+//   Widget buildViewportChrome(
+//       BuildContext context, Widget child, AxisDirection axisDirection) {
+//     return child;
+//   }
+// }

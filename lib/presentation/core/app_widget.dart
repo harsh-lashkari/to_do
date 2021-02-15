@@ -35,7 +35,7 @@ class AppWidget extends StatelessWidget {
           ),
         ),
       ),
-      home: SignInPageBlocP(),
+      home: SignInPageBlocProvider(),
     );
   }
 }

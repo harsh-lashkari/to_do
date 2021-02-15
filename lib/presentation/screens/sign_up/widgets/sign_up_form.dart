@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:to_do/application/auth/sign_in_form/sign_in_form_bloc.dart';
-import 'package:to_do/shared/text_style_constants.dart';
 import 'package:to_do/shared/sizeconfig.dart';
+import 'package:to_do/shared/text_style_constants.dart';
 
 class SignUpForm extends StatelessWidget {
   @override
@@ -12,7 +12,9 @@ class SignUpForm extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Form(
-          child: Column(
+          // ignore: deprecated_member_use
+          autovalidate: state.showErrorMessages,
+          child: ListView(
             children: [
               Padding(
                 padding: EdgeInsets.only(
@@ -42,14 +44,14 @@ class SignUpForm extends StatelessWidget {
                       .fold(
                         (f) => f.maybeMap(
                           invalidEmail: (_) => 'Invalid Email',
-                          orElse: null,
+                          orElse: () => null,
                         ),
                         (_) => null,
                       ),
                 ),
               ),
               SizedBox(
-                height: SizeConfig.safeBlockVertical * 25,
+                height: SizeConfig.safeBlockVertical * 30,
               ),
               Padding(
                 padding: EdgeInsets.only(
@@ -71,14 +73,16 @@ class SignUpForm extends StatelessWidget {
                   ),
                   obscureText: true,
                   autocorrect: false,
-                  onChanged: (value) => context
-                      .read<SignInFormBloc>()
-                      .add(SignInFormEvent.passwordInput(value)),
+                  onChanged: (value) {
+                    context
+                        .read<SignInFormBloc>()
+                        .add(SignInFormEvent.passwordInput(value));
+                  },
                   validator: (_) =>
                       context.read<SignInFormBloc>().state.password.value.fold(
                             (f) => f.maybeMap(
                               shortPassword: (_) => 'Short Password',
-                              orElse: null,
+                              orElse: () => null,
                             ),
                             (_) => null,
                           ),

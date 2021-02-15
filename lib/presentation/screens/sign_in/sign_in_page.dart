@@ -10,7 +10,7 @@ import 'package:to_do/shared/text_style_constants.dart';
 import 'package:to_do/shared/color_constants.dart';
 import 'package:to_do/shared/sizeconfig.dart';
 
-class SignInPageBlocP extends StatelessWidget {
+class SignInPageBlocProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -57,13 +57,14 @@ class SignInPage extends StatelessWidget {
                   tag: "SignUp/SignInPageTransition",
                   child: Image.asset(
                     'images/sign_in.png',
+                    // width: 300,
                   ),
                 ),
                 SizedBox(
-                  height: SizeConfig.safeBlockVertical * 25,
+                  height: SizeConfig.safeBlockVertical * 20,
                 ),
                 SizedBox(
-                  height: SizeConfig.safeBlockVertical * 160,
+                  height: SizeConfig.safeBlockVertical * 250,
                   child: SignInForm(),
                 ),
               ],
@@ -105,7 +106,7 @@ class SignInPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       PageTransition(
-                        child: SignUpPage(),
+                        child: SignUpPageBlocProvider(),
                         type: PageTransitionType.rightToLeftWithFade,
                       ),
                     );
@@ -124,7 +125,7 @@ class SignInPage extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: SizeConfig.safeBlockVertical * 30,
+              height: SizeConfig.safeBlockVertical * 20,
             ),
             GestureDetector(
               onTap: () {
@@ -139,7 +140,7 @@ class SignInPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: SizeConfig.safeBlockHorizontal * 25,
+                      width: SizeConfig.safeBlockHorizontal * 40,
                     ),
                     Image(
                       height: SizeConfig.safeBlockVertical * 30,
@@ -156,7 +157,7 @@ class SignInPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: SizeConfig.safeBlockHorizontal * 25,
+                      width: SizeConfig.safeBlockHorizontal * 40,
                     ),
                   ],
                 ),
