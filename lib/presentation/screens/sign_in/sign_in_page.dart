@@ -10,6 +10,16 @@ import 'package:to_do/shared/text_style_constants.dart';
 import 'package:to_do/shared/color_constants.dart';
 import 'package:to_do/shared/sizeconfig.dart';
 
+class SignInPageBlocP extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<SignInFormBloc>(),
+      child: SignInPage(),
+    );
+  }
+}
+
 class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -52,12 +62,9 @@ class SignInPage extends StatelessWidget {
                 SizedBox(
                   height: SizeConfig.safeBlockVertical * 25,
                 ),
-                BlocProvider(
-                  create: (context) => getIt<SignInFormBloc>(),
-                  child: SizedBox(
-                    height: SizeConfig.safeBlockVertical * 160,
-                    child: SignInForm(),
-                  ),
+                SizedBox(
+                  height: SizeConfig.safeBlockVertical * 160,
+                  child: SignInFormBlocP(),
                 ),
               ],
             ),
@@ -155,25 +162,31 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                context.read<SignInFormBloc>().add(
-                      const SignInFormEvent.signInWithEmailAndPasswordPressed(),
-                    );
-                print("pressed");
-              },
-              child: Container(
-                color: kButtonColor,
-                width: double.maxFinite,
-                height: SizeConfig.safeBlockVertical * 70,
-                alignment: Alignment.center,
-                child: Text(
-                  "SIGN IN",
-                  style: GoogleFonts.quicksand(
-                    textStyle: kButtonTextStyle,
+            BlocConsumer<SignInFormBloc, SignInFormState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return GestureDetector(
+                  onTap: () {
+                    context.read<SignInFormBloc>().add(
+                          const SignInFormEvent
+                              .signInWithEmailAndPasswordPressed(),
+                        );
+                    print("pressed");
+                  },
+                  child: Container(
+                    color: kButtonColor,
+                    width: double.maxFinite,
+                    height: SizeConfig.safeBlockVertical * 70,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "SIGN IN",
+                      style: GoogleFonts.quicksand(
+                        textStyle: kButtonTextStyle,
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ],
         ),

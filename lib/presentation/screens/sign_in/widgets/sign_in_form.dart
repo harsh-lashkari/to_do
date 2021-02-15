@@ -2,8 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:to_do/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:to_do/injection.dart';
 import 'package:to_do/shared/text_style_constants.dart';
 import 'package:to_do/shared/sizeconfig.dart';
+
+
+class SignInFormBlocP extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<SignInFormBloc>(),
+      child: SignInForm(),
+    );
+  }
+}
 
 class SignInForm extends StatelessWidget {
   @override
@@ -11,6 +23,8 @@ class SignInForm extends StatelessWidget {
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {},
       builder: (context, state) {
+        print("Show Error Messages:- " + state.showErrorMessages.toString());
+
         return Form(
           // ignore: deprecated_member_use
           autovalidate: state.showErrorMessages,
@@ -73,9 +87,11 @@ class SignInForm extends StatelessWidget {
                   ),
                   obscureText: true,
                   autocorrect: false,
-                  onChanged: (value) => context
-                      .read<SignInFormBloc>()
-                      .add(SignInFormEvent.passwordInput(value)),
+                  onChanged: (value) {
+                    context
+                        .read<SignInFormBloc>()
+                        .add(SignInFormEvent.passwordInput(value));
+                  },
                   validator: (_) =>
                       context.read<SignInFormBloc>().state.password.value.fold(
                             (f) => f.maybeMap(

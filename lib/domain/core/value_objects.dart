@@ -9,9 +9,9 @@ abstract class ValueObject<T> {
   Either<ValueFailure<T>, T> get value;
 
   /// Throws [UnexpectedValueFailure] containing [ValueFailure]
-  T getOrCrash(){
+  T getOrCrash() {
     // id = identity - same as (right) => right
-    return value.fold((f) => throw UnexpectedValueError(f), id);
+    return value.fold((f) => throw UnexpectedValueError(f), (r) => r);
   }
 
   bool isValid() => value.isRight();

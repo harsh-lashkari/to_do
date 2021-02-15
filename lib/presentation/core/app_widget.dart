@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:to_do/application/auth/sign_in_form/sign_in_form_bloc.dart';
-import 'package:to_do/injection.dart';
 import 'package:to_do/presentation/screens/sign_in/sign_in_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -38,10 +35,7 @@ class AppWidget extends StatelessWidget {
           ),
         ),
       ),
-      home: BlocProvider(
-        create: (context) => getIt<SignInFormBloc>(),
-        child: SignInPage(),
-      ),
+      home: SignInPageBlocP(),
     );
   }
 }

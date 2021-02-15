@@ -65,7 +65,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: SizeConfig.safeBlockVertical * 20,
+                  height: SizeConfig.safeBlockVertical * 30,
                 ),
                 BlocProvider(
                   create: (context) => getIt<SignInFormBloc>(),
