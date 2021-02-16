@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +10,27 @@ class SignInForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignInFormBloc, SignInFormState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        state.authFailureOrSuccessOption.fold(
+          () {},
+          (either) => either.fold(
+            (failure) {
+              FlushbarHelper.createError(
+                message: failure.map(
+                  cancelledByUser: (_) => 'CANCELLED',
+                  serverError: (_) => 'SERVER ERROR',
+                  emailAlreadyInUse: (_) => 'EMAIL ALREADY IN USE',
+                  invalidEmailAndPasswordCombination: (_) =>
+                      'INVALID EMAIL AND PASSWORD COMBINATION',
+                ),
+              ).show(context);
+            },
+            (_) {
+              // TODO: Navigate
+            },
+          ),
+        );
+      },
       builder: (context, state) {
         return Form(
           // ignore: deprecated_member_use

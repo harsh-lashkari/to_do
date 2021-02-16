@@ -1,9 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:to_do/domain/auth/user.dart';
 import 'package:to_do/domain/auth/value_objects.dart';
 import 'package:to_do/domain/auth/auth_failure.dart';
 
 abstract class IAuthFacade {
+  Future<Option<User>> getSignedInUser();
+
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     @required EmailAddress emailAddress,
     @required Password password,
@@ -15,4 +18,6 @@ abstract class IAuthFacade {
   });
 
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
+
+  Future<void> signOut();
 }

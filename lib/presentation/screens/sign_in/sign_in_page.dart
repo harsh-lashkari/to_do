@@ -64,7 +64,7 @@ class SignInPage extends StatelessWidget {
                   height: SizeConfig.safeBlockVertical * 20,
                 ),
                 SizedBox(
-                  height: SizeConfig.safeBlockVertical * 250,
+                  height: SizeConfig.safeBlockVertical * 220,
                   child: SignInForm(),
                 ),
               ],
