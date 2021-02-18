@@ -15,8 +15,14 @@ class SplashPage extends StatelessWidget {
       listener: (context, state) {
         state.map(
             initial: (_) {},
-            authenticated: (_) {
-              print('I AM AUTHENTICATED');
+            authenticated: (_) async {
+              await Future.delayed(
+                const Duration(seconds: 3),
+              );
+              // print('I AM AUTHENTICATED');
+              ExtendedNavigator.of(context).replace(
+                Routes.signInPageBlocProvider,
+              );
               // ExtendedNavigator.of(context).replace(Routes.);
             },
             unauthenticated: (_) async {
@@ -33,7 +39,7 @@ class SplashPage extends StatelessWidget {
           body: Center(
             child: Padding(
               padding: EdgeInsets.only(
-                top: SizeConfig.safeBlockVertical * 150,
+                top: SizeConfig.safeBlockVertical * 75,
                 bottom: SizeConfig.safeBlockVertical * 150,
               ),
               child: Column(
@@ -41,7 +47,7 @@ class SplashPage extends StatelessWidget {
                 children: [
                   Text(
                     'NOTES',
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.quicksand(
                       fontWeight: FontWeight.w200,
                       fontSize: SizeConfig.safeBlockVertical * 50,
                     ),
@@ -50,15 +56,15 @@ class SplashPage extends StatelessWidget {
                   //   height: SizeConfig.safeBlockVertical * 50,
                   // ),
                   Image(
-                    image: const AssetImage('images/splash.png'),
+                    image: const AssetImage('images/splash.jpg'),
                     width: SizeConfig.safeBlockHorizontal * 500,
                   ),
                   // SizedBox(
                   //   height: SizeConfig.safeBlockVertical * 50,
                   // ),
-                  SpinKitFadingCube(
-                    color: Colors.black,
-                    size: SizeConfig.safeBlockHorizontal * 25,
+                  SpinKitSquareCircle(
+                    color: const Color(0xff347af0),
+                    size: SizeConfig.safeBlockHorizontal * 50,
                   ),
                 ],
               ),

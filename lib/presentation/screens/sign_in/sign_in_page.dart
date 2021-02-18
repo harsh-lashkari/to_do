@@ -37,8 +37,8 @@ class SignInPage extends StatelessWidget {
                 brightness: Brightness.dark,
                 centerTitle: true,
                 title: Text(
-                  'Welcome',
-                  style: GoogleFonts.quicksand(
+                  'WELCOME',
+                  style: GoogleFonts.roboto(
                     textStyle: kAppBarTextStyle,
                   ),
                 ),
@@ -56,15 +56,15 @@ class SignInPage extends StatelessWidget {
                 Hero(
                   tag: "SignUp/SignInPageTransition",
                   child: Image.asset(
-                    'images/sign_in.png',
-                    // width: 300,
+                    'images/sign_in.jpg',
+                    width: 300,
                   ),
                 ),
+                // SizedBox(
+                //     height: SizeConfig.safeBlockVertical * 20,
+                //     ),
                 SizedBox(
-                  height: SizeConfig.safeBlockVertical * 20,
-                ),
-                SizedBox(
-                  height: SizeConfig.safeBlockVertical * 220,
+                  height: SizeConfig.safeBlockVertical * 200,
                   child: SignInForm(),
                 ),
               ],
@@ -76,7 +76,7 @@ class SignInPage extends StatelessWidget {
           children: [
             Text(
               'Forgot Password',
-              style: GoogleFonts.quicksand(
+              style: GoogleFonts.roboto(
                 fontSize: SizeConfig.safeBlockVertical * 15,
                 fontWeight: FontWeight.bold,
                 //fontStyle: FontStyle.italic,
@@ -92,7 +92,7 @@ class SignInPage extends StatelessWidget {
               children: [
                 Text(
                   "Don't have an account?",
-                  style: GoogleFonts.quicksand(
+                  style: GoogleFonts.roboto(
                     fontSize: SizeConfig.safeBlockVertical * 15,
                     fontWeight: FontWeight.bold,
                   ),
@@ -113,7 +113,7 @@ class SignInPage extends StatelessWidget {
                   },
                   child: Text(
                     'SIGN UP',
-                    style: GoogleFonts.quicksand(
+                    style: GoogleFonts.roboto(
                       fontSize: SizeConfig.safeBlockVertical * 15,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic,
@@ -149,7 +149,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     Text(
                       'SIGN IN WITH GOOGLE',
-                      style: GoogleFonts.quicksand(
+                      style: GoogleFonts.roboto(
                         color: Colors.black,
                         letterSpacing: 1,
                         fontSize: SizeConfig.safeBlockVertical * 18,
@@ -177,7 +177,7 @@ class SignInPage extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   "SIGN IN",
-                  style: GoogleFonts.quicksand(
+                  style: GoogleFonts.roboto(
                     textStyle: kButtonTextStyle,
                   ),
                 ),

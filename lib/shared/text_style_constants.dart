@@ -9,12 +9,12 @@ const kFormFieldTextStyle = TextStyle(
 const kAppBarTextStyle = TextStyle(
   fontSize: 27,
   color: Colors.black,
-  fontWeight: FontWeight.w700,
+  // fontWeight: FontWeight.w700,
 );
 
 const kButtonTextStyle = TextStyle(
   color: Colors.white,
-  letterSpacing: 2,
+  letterSpacing: 1,
   fontSize: 25,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w500,
 );

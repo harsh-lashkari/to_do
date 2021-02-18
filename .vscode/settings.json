@@ -5,8 +5,10 @@
         "Schyler",
         "autocorrect",
         "cupertino",
+        "dtos",
         "flushbar",
         "nodoc",
+        "serializable",
         "unfocus"
     ]
 }

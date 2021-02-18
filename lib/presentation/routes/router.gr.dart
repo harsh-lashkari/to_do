@@ -10,7 +10,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/sign_in/sign_in_page.dart';
-import '../splash/splash_page.dart';
+import '../screens/splash/splash_page.dart';
 
 class Routes {
   static const String splashPage = '/';

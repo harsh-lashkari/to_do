@@ -43,7 +43,7 @@ class SignInForm extends StatelessWidget {
                   right: SizeConfig.safeBlockHorizontal * 15,
                 ),
                 child: TextFormField(
-                  style: GoogleFonts.quicksand(
+                  style: GoogleFonts.roboto(
                     textStyle: kFormFieldTextStyle,
                   ),
                   decoration: const InputDecoration(
@@ -80,7 +80,7 @@ class SignInForm extends StatelessWidget {
                   right: SizeConfig.safeBlockHorizontal * 15,
                 ),
                 child: TextFormField(
-                  style: GoogleFonts.quicksand(
+                  style: GoogleFonts.roboto(
                     textStyle: kFormFieldTextStyle,
                   ),
                   decoration: const InputDecoration(
@@ -109,6 +109,12 @@ class SignInForm extends StatelessWidget {
                           ),
                 ),
               ),
+              if (state.isSubmitting) ...[
+                SizedBox(
+                  height: SizeConfig.safeBlockVertical * 25,
+                ),
+                const LinearProgressIndicator(),
+              ]
             ],
           ),
         );
