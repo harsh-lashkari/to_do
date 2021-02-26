@@ -43,7 +43,7 @@ class SignUpForm extends StatelessWidget {
                   right: SizeConfig.safeBlockHorizontal * 15,
                 ),
                 child: TextFormField(
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.quicksand(
                     textStyle: kFormFieldTextStyle,
                   ),
                   decoration: const InputDecoration(
@@ -80,7 +80,7 @@ class SignUpForm extends StatelessWidget {
                   right: SizeConfig.safeBlockHorizontal * 15,
                 ),
                 child: TextFormField(
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.quicksand(
                     textStyle: kFormFieldTextStyle,
                   ),
                   decoration: const InputDecoration(

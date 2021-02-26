@@ -7,6 +7,26 @@ import 'package:to_do/domain/core/value_objects.dart';
 import 'package:to_do/domain/core/value_transformers.dart';
 import 'package:to_do/domain/core/value_validators.dart';
 
+class NoteTitle extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  static const maxLength = 30;
+
+  factory NoteTitle(String input) {
+    assert(input != null);
+    return NoteTitle._(
+      validateMaxStringLength(input, maxLength)
+          .flatMap(validateStringNotEmpty)
+          .flatMap(
+            validateSingleLine,
+          ),
+    );
+  }
+
+  const NoteTitle._(this.value);
+}
+
 class NoteBody extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
@@ -14,6 +34,7 @@ class NoteBody extends ValueObject<String> {
   static const maxLength = 1000;
 
   factory NoteBody(String input) {
+    assert(input != null);
     return NoteBody._(
       validateMaxStringLength(input, maxLength).flatMap(validateStringNotEmpty),
     );
@@ -29,6 +50,7 @@ class TodoName extends ValueObject<String> {
   static const maxLength = 30;
 
   factory TodoName(String input) {
+    assert(input != null);
     return TodoName._(
       validateMaxStringLength(input, maxLength)
           .flatMap(validateStringNotEmpty)
@@ -43,10 +65,10 @@ class TodoName extends ValueObject<String> {
 
 class NoteColor extends ValueObject<Color> {
   static const predefinedColors = [
+    Color(0xFFFBBC04),
     Color(0xFFAECBFA),
     Color(0xFFF28B82),
     Color(0xFFD7AEFB),
-    Color(0xFFFBBC04),
   ];
 
   @override
@@ -71,6 +93,7 @@ class List3<T> extends ValueObject<KtList<T>> {
   static const maxLength = 3;
 
   factory List3(KtList<T> input) {
+    assert(input != null);
     return List3._(
       validateMaxListLength(input, maxLength),
     );

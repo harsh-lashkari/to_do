@@ -20,12 +20,14 @@ class _$NoteDTOTearOff {
   _NoteDTO call(
       {@JsonKey(ignore: true) String id,
       @required String body,
+      @required String title,
       @required int color,
       @required List<TodoItemDTO> todo,
       @required @ServerTimestampConverter() FieldValue serverTimeStamp}) {
     return _NoteDTO(
       id: id,
       body: body,
+      title: title,
       color: color,
       todo: todo,
       serverTimeStamp: serverTimeStamp,
@@ -47,6 +49,7 @@ mixin _$NoteDTO {
   @JsonKey(ignore: true)
   String get id;
   String get body;
+  String get title;
   int get color;
   List<TodoItemDTO> get todo;
   @ServerTimestampConverter()
@@ -64,6 +67,7 @@ abstract class $NoteDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(ignore: true) String id,
       String body,
+      String title,
       int color,
       List<TodoItemDTO> todo,
       @ServerTimestampConverter() FieldValue serverTimeStamp});
@@ -81,6 +85,7 @@ class _$NoteDTOCopyWithImpl<$Res> implements $NoteDTOCopyWith<$Res> {
   $Res call({
     Object id = freezed,
     Object body = freezed,
+    Object title = freezed,
     Object color = freezed,
     Object todo = freezed,
     Object serverTimeStamp = freezed,
@@ -88,6 +93,7 @@ class _$NoteDTOCopyWithImpl<$Res> implements $NoteDTOCopyWith<$Res> {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       body: body == freezed ? _value.body : body as String,
+      title: title == freezed ? _value.title : title as String,
       color: color == freezed ? _value.color : color as int,
       todo: todo == freezed ? _value.todo : todo as List<TodoItemDTO>,
       serverTimeStamp: serverTimeStamp == freezed
@@ -105,6 +111,7 @@ abstract class _$NoteDTOCopyWith<$Res> implements $NoteDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(ignore: true) String id,
       String body,
+      String title,
       int color,
       List<TodoItemDTO> todo,
       @ServerTimestampConverter() FieldValue serverTimeStamp});
@@ -123,6 +130,7 @@ class __$NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
   $Res call({
     Object id = freezed,
     Object body = freezed,
+    Object title = freezed,
     Object color = freezed,
     Object todo = freezed,
     Object serverTimeStamp = freezed,
@@ -130,6 +138,7 @@ class __$NoteDTOCopyWithImpl<$Res> extends _$NoteDTOCopyWithImpl<$Res>
     return _then(_NoteDTO(
       id: id == freezed ? _value.id : id as String,
       body: body == freezed ? _value.body : body as String,
+      title: title == freezed ? _value.title : title as String,
       color: color == freezed ? _value.color : color as int,
       todo: todo == freezed ? _value.todo : todo as List<TodoItemDTO>,
       serverTimeStamp: serverTimeStamp == freezed
@@ -146,10 +155,12 @@ class _$_NoteDTO extends _NoteDTO {
   const _$_NoteDTO(
       {@JsonKey(ignore: true) this.id,
       @required this.body,
+      @required this.title,
       @required this.color,
       @required this.todo,
       @required @ServerTimestampConverter() this.serverTimeStamp})
       : assert(body != null),
+        assert(title != null),
         assert(color != null),
         assert(todo != null),
         assert(serverTimeStamp != null),
@@ -164,6 +175,8 @@ class _$_NoteDTO extends _NoteDTO {
   @override
   final String body;
   @override
+  final String title;
+  @override
   final int color;
   @override
   final List<TodoItemDTO> todo;
@@ -173,7 +186,7 @@ class _$_NoteDTO extends _NoteDTO {
 
   @override
   String toString() {
-    return 'NoteDTO(id: $id, body: $body, color: $color, todo: $todo, serverTimeStamp: $serverTimeStamp)';
+    return 'NoteDTO(id: $id, body: $body, title: $title, color: $color, todo: $todo, serverTimeStamp: $serverTimeStamp)';
   }
 
   @override
@@ -184,6 +197,8 @@ class _$_NoteDTO extends _NoteDTO {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.body, body) ||
                 const DeepCollectionEquality().equals(other.body, body)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.color, color) ||
                 const DeepCollectionEquality().equals(other.color, color)) &&
             (identical(other.todo, todo) ||
@@ -198,6 +213,7 @@ class _$_NoteDTO extends _NoteDTO {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(body) ^
+      const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(color) ^
       const DeepCollectionEquality().hash(todo) ^
       const DeepCollectionEquality().hash(serverTimeStamp);
@@ -218,6 +234,7 @@ abstract class _NoteDTO extends NoteDTO {
   const factory _NoteDTO(
           {@JsonKey(ignore: true) String id,
           @required String body,
+          @required String title,
           @required int color,
           @required List<TodoItemDTO> todo,
           @required @ServerTimestampConverter() FieldValue serverTimeStamp}) =
@@ -230,6 +247,8 @@ abstract class _NoteDTO extends NoteDTO {
   String get id;
   @override
   String get body;
+  @override
+  String get title;
   @override
   int get color;
   @override

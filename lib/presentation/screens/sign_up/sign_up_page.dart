@@ -43,7 +43,7 @@ class SignUpPage extends StatelessWidget {
                 centerTitle: true,
                 title: Text(
                   'Create Account',
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.quicksand(
                     textStyle: kAppBarTextStyle,
                   ),
                 ),
@@ -62,7 +62,7 @@ class SignUpPage extends StatelessWidget {
                   tag: "SignUp/SignInPageTransition",
                   child: Image.asset(
                     'images/sign_up.jpg',
-                    width: 300,
+                    width: 250,
                   ),
                 ),
                 SizedBox(
@@ -70,7 +70,7 @@ class SignUpPage extends StatelessWidget {
                 ),
                 Text(
                   'REGISTER WITH EMAIL ADDRESS',
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.quicksand(
                     fontSize: SizeConfig.safeBlockVertical * 15,
                     fontWeight: FontWeight.bold,
                   ),
@@ -94,7 +94,7 @@ class SignUpPage extends StatelessWidget {
               children: [
                 Text(
                   'Already have an account?',
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.quicksand(
                     fontSize: SizeConfig.safeBlockVertical * 15,
                     fontWeight: FontWeight.bold,
                   ),
@@ -108,7 +108,7 @@ class SignUpPage extends StatelessWidget {
                   },
                   child: Text(
                     'SIGN IN',
-                    style: GoogleFonts.roboto(
+                    style: GoogleFonts.quicksand(
                       fontSize: SizeConfig.safeBlockVertical * 15,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic,
@@ -138,7 +138,7 @@ class SignUpPage extends StatelessWidget {
             //       ),
             //       Text(
             //         'SIGN UP WITH GOOGLE',
-            //         style: GoogleFonts.roboto(
+            //         style: GoogleFonts.quicksand(
             //           color: Colors.black,
             //           letterSpacing: 1,
             //           fontSize: 18,
@@ -165,7 +165,7 @@ class SignUpPage extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   "SIGN UP",
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.quicksand(
                     textStyle: kButtonTextStyle,
                   ),
                 ),

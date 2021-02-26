@@ -9,6 +9,7 @@ part of 'note_dtos.dart';
 _$_NoteDTO _$_$_NoteDTOFromJson(Map<String, dynamic> json) {
   return _$_NoteDTO(
     body: json['body'] as String,
+    title: json['title'] as String,
     color: json['color'] as int,
     todo: (json['todo'] as List)
         ?.map((e) =>
@@ -22,8 +23,9 @@ _$_NoteDTO _$_$_NoteDTOFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_NoteDTOToJson(_$_NoteDTO instance) =>
     <String, dynamic>{
       'body': instance.body,
+      'title': instance.title,
       'color': instance.color,
-      'todo': instance.todo,
+      'todo': instance.todo?.map((e) => e?.toJson())?.toList(),
       'serverTimeStamp':
           const ServerTimestampConverter().toJson(instance.serverTimeStamp),
     };

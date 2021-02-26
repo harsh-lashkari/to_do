@@ -17,8 +17,10 @@ class AppWidget extends StatelessWidget {
       ],
     );
     SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Color(0x99FFFFFF),
+      SystemUiOverlayStyle(
+        // statusBarBrightness: Brightness.light,
+        statusBarColor: Colors.black.withOpacity(0.5),
+        // statusBarIconBrightness: Brightness.light,
       ),
     );
 
@@ -38,6 +40,8 @@ class AppWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
           ),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              backgroundColor: Colors.black),
           scaffoldBackgroundColor: Colors.white,
           appBarTheme: const AppBarTheme(
             elevation: 0,

@@ -12,7 +12,7 @@ abstract class ValueObject<T> {
   /// Throws [UnexpectedValueFailure] containing [ValueFailure]
   T getOrCrash() {
     // id = identity - same as (right) => right
-    return value.fold((f) => throw UnexpectedValueError(f), (r) => r);
+    return value.fold((f) => throw UnexpectedValueError(f), id);
   }
 
   Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
@@ -35,7 +35,7 @@ abstract class ValueObject<T> {
   int get hashCode => value.hashCode;
 
   @override
-  String toString() => 'Value(value: $value)';
+  String toString() => 'Value($value)';
 }
 
 class UniqueId extends ValueObject<String> {

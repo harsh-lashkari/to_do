@@ -6,7 +6,7 @@ import 'package:to_do/domain/core/value_objects.dart';
 import 'package:to_do/domain/notes/todo_item.dart';
 import 'package:to_do/domain/notes/value_objects.dart';
 
-part 'notes.freezed.dart';
+part 'note.freezed.dart';
 
 @freezed
 abstract class Note implements _$Note {
@@ -14,6 +14,7 @@ abstract class Note implements _$Note {
 
   const factory Note({
     @required UniqueId id,
+    @required NoteTitle title,
     @required NoteBody body,
     @required NoteColor color,
     @required List3<TodoItem> todo,
@@ -21,14 +22,16 @@ abstract class Note implements _$Note {
 
   factory Note.empty() => Note(
         id: UniqueId(),
+        title: NoteTitle(''),
         body: NoteBody(''),
         color: NoteColor(NoteColor.predefinedColors[0]),
         todo: List3(emptyList()),
       );
 
   Option<ValueFailure<dynamic>> get failureOption {
-    return body.failureOrUnit
-        .andThen(todo.value)
+    return title.failureOrUnit
+        .andThen(body.failureOrUnit)
+        .andThen(todo.failureOrUnit)
         .andThen(
           todo
               .getOrCrash()

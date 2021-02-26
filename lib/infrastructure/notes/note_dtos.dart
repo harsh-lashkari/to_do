@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:to_do/domain/core/value_objects.dart';
-import 'package:to_do/domain/notes/notes.dart';
+import 'package:to_do/domain/notes/note.dart';
 import 'package:to_do/domain/notes/todo_item.dart';
 import 'package:to_do/domain/notes/value_objects.dart';
 import 'package:kt_dart/kt.dart';
@@ -17,6 +17,7 @@ abstract class NoteDTO implements _$NoteDTO {
   const factory NoteDTO({
     @JsonKey(ignore: true) String id,
     @required String body,
+    @required String title,
     @required int color,
     @required List<TodoItemDTO> todo,
     @required @ServerTimestampConverter() FieldValue serverTimeStamp,
@@ -24,6 +25,8 @@ abstract class NoteDTO implements _$NoteDTO {
 
   factory NoteDTO.fromDomain(Note note) {
     return NoteDTO(
+      id: note.id.getOrCrash(),
+      title: note.title.getOrCrash(),
       body: note.body.getOrCrash(),
       color: note.color.getOrCrash().value,
       todo: note.todo
@@ -39,6 +42,7 @@ abstract class NoteDTO implements _$NoteDTO {
   Note toDomain() {
     return Note(
       id: UniqueId.fromUniqueString(id),
+      title: NoteTitle(title),
       body: NoteBody(body),
       color: NoteColor(Color(color)),
       todo: List3(todo.map((dto) => dto.toDomain()).toImmutableList()),

@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:to_do/application/auth/auth_bloc.dart';
 import 'package:to_do/presentation/routes/router.gr.dart';
+import 'package:to_do/shared/config.dart';
 import 'package:to_do/shared/sizeconfig.dart';
 
 class SplashPage extends StatelessWidget {
@@ -16,12 +17,14 @@ class SplashPage extends StatelessWidget {
         state.map(
             initial: (_) {},
             authenticated: (_) async {
+              // ignore: await_only_futures
+              await changeTheme.setInitialAppTheme();
               await Future.delayed(
                 const Duration(seconds: 3),
               );
               // print('I AM AUTHENTICATED');
               ExtendedNavigator.of(context).replace(
-                Routes.signInPageBlocProvider,
+                Routes.noteOverviewPage,
               );
               // ExtendedNavigator.of(context).replace(Routes.);
             },
@@ -36,6 +39,8 @@ class SplashPage extends StatelessWidget {
       },
       child: SafeArea(
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomPadding: false,
           body: Center(
             child: Padding(
               padding: EdgeInsets.only(

@@ -3,12 +3,28 @@
         "Firestore",
         "LTRB",
         "Schyler",
+        "Scrollable",
         "autocorrect",
         "cupertino",
         "dtos",
         "flushbar",
+        "fullscreen",
         "nodoc",
+        "prefs",
+        "reorderable",
         "serializable",
+        "sidemenu",
         "unfocus"
-    ]
+    ],
+    "explorerExclude.backup": null,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.freezed.dart": true,
+        "**/*.g.dart": true
+    },
+    "material-icon-theme.hidesExplorerArrows": true
 }

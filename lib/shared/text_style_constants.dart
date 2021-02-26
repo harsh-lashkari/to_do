@@ -9,12 +9,26 @@ const kFormFieldTextStyle = TextStyle(
 const kAppBarTextStyle = TextStyle(
   fontSize: 27,
   color: Colors.black,
-  // fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.bold,
 );
 
 const kButtonTextStyle = TextStyle(
   color: Colors.white,
   letterSpacing: 1,
   fontSize: 25,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.bold,
+);
+
+const kNoteTitleTextStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.w300,
+);
+
+const kNoteBodyTextStyle = TextStyle(
+  fontSize: 18,
+);
+
+const kNoteTodoTextStyle = TextStyle(
+  fontSize: 16,
+  // fontStyle: FontStyle.italic,
 );
