@@ -225,7 +225,6 @@ class NoteFormPageScaffold extends StatelessWidget {
       ),
       extendBody: true,
       resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: false,
     );
   }
 }

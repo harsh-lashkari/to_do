@@ -26,7 +26,7 @@ class SplashPage extends StatelessWidget {
               ExtendedNavigator.of(context).replace(
                 Routes.noteOverviewPage,
               );
-              // ExtendedNavigator.of(context).replace(Routes.);
+              // ExtendedNavigator.of(context).replace(Routes);
             },
             unauthenticated: (_) async {
               await Future.delayed(
@@ -40,7 +40,6 @@ class SplashPage extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          resizeToAvoidBottomPadding: false,
           body: Center(
             child: Padding(
               padding: EdgeInsets.only(
