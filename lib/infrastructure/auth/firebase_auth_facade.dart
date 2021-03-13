@@ -20,9 +20,8 @@ class FirebaseAuthFacade implements IAuthFacade {
   );
 
   @override
-  Future<Option<User>> getSignedInUser() async => optionOf(
-        _firebaseAuth.currentUser?.toDomain(),
-      );
+  Future<Option<User>> getSignedInUser() async =>
+      optionOf(_firebaseAuth.currentUser?.toDomain());
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -30,14 +29,14 @@ class FirebaseAuthFacade implements IAuthFacade {
     @required Password password,
   }) async {
     final emailAddressStr = emailAddress.getOrCrash();
-    final passwordStr = emailAddress.getOrCrash();
+    final passwordStr = password.getOrCrash();
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: emailAddressStr,
         password: passwordStr,
       );
       return right(unit);
-    } on FirebaseException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
@@ -52,15 +51,15 @@ class FirebaseAuthFacade implements IAuthFacade {
     @required Password password,
   }) async {
     final emailAddressStr = emailAddress.getOrCrash();
-    final passwordStr = emailAddress.getOrCrash();
+    final passwordStr = password.getOrCrash();
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
         email: emailAddressStr,
         password: passwordStr,
       );
       return right(unit);
-    } on FirebaseException catch (e) {
-      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'wrong-password' || e.code == 'user-not-found') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
       } else {
         return left(const AuthFailure.serverError());
@@ -75,16 +74,17 @@ class FirebaseAuthFacade implements IAuthFacade {
       if (googleUser == null) {
         return left(const AuthFailure.cancelledByUser());
       }
+
       final googleAuthentication = await googleUser.authentication;
 
       final authCredential = GoogleAuthProvider.credential(
         idToken: googleAuthentication.idToken,
         accessToken: googleAuthentication.accessToken,
       );
-      return _firebaseAuth
-          .signInWithCredential(authCredential)
-          .then((r) => right(unit));
-    } on FirebaseException catch (_) {
+
+      await _firebaseAuth.signInWithCredential(authCredential);
+      return right(unit);
+    } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
     }
   }

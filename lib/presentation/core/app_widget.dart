@@ -16,13 +16,14 @@ class AppWidget extends StatelessWidget {
         DeviceOrientation.portraitDown,
       ],
     );
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        // statusBarBrightness: Brightness.light,
-        statusBarColor: Colors.black.withOpacity(0.5),
-        // statusBarIconBrightness: Brightness.light,
-      ),
-    );
+
+    // SystemChrome.setSystemUIOverlayStyle(
+    //   SystemUiOverlayStyle(
+    //     // statusBarBrightness: Brightness.light,
+    //     statusBarColor: Colors.black.withOpacity(0.5),
+    //     statusBarIconBrightness: Brightness.light,
+    //   ),
+    // );
 
     return MultiBlocProvider(
       providers: [

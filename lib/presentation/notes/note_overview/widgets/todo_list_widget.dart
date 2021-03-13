@@ -30,6 +30,7 @@ class TodoList extends StatelessWidget {
         if (state.note.todo.isFull) {
           FlushbarHelper.createAction(
             message: 'Want more to-dos? Activate premium. 🤩',
+            // ignore: deprecated_member_use
             button: FlatButton(
               onPressed: () {},
               child: null,

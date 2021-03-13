@@ -1,8 +1,11 @@
 import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:to_do/application/auth/auth_bloc.dart';
 import 'package:to_do/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:to_do/presentation/routes/router.gr.dart';
 import 'package:to_do/shared/sizeconfig.dart';
 import 'package:to_do/shared/text_style_constants.dart';
 
@@ -26,7 +29,12 @@ class SignUpForm extends StatelessWidget {
               ).show(context);
             },
             (_) {
-              // TODO: Navigate
+              ExtendedNavigator.of(context).replace(
+                Routes.noteOverviewPage,
+              );
+              context
+                  .read<AuthBloc>()
+                  .add(const AuthEvent.authCheckRequested());
             },
           ),
         );

@@ -110,121 +110,126 @@ class NoteFormPageScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(
-          SizeConfig.safeBlockVertical * 75,
-        ),
-        child: BlocBuilder<NoteFormBloc, NoteFormState>(
-          buildWhen: (p, c) => p.note.color != c.note.color,
-          builder: (context, state) {
-            return Container(
-              decoration: BoxDecoration(
-                color: state.note.color.getOrCrash(),
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AppBar(
-                    // backgroundColor: Colors.blue,
-                    title: BlocBuilder<NoteFormBloc, NoteFormState>(
-                        buildWhen: (previousState, currentState) =>
-                            previousState.isEditing != currentState.isEditing,
-                        builder: (context, state) {
-                          return Text(
-                            state.isEditing ? 'Edit note' : 'Add a new note',
-                            style: GoogleFonts.quicksand(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
+    return SafeArea(
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(
+            SizeConfig.safeBlockVertical * 75,
+          ),
+          child: BlocBuilder<NoteFormBloc, NoteFormState>(
+            buildWhen: (p, c) => p.note.color != c.note.color,
+            builder: (context, state) {
+              return Container(
+                decoration: BoxDecoration(
+                  color: state.note.color.getOrCrash(),
+                  borderRadius: const BorderRadius.vertical(
+                    bottom: Radius.circular(5),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AppBar(
+                      // backgroundColor: Colors.blue,
+                      title: BlocBuilder<NoteFormBloc, NoteFormState>(
+                          buildWhen: (previousState, currentState) =>
+                              previousState.isEditing != currentState.isEditing,
+                          builder: (context, state) {
+                            return Text(
+                              state.isEditing ? 'Edit note' : 'Add a new note',
+                              style: GoogleFonts.quicksand(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            );
+                          }),
+                      actions: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: SizeConfig.safeBlockHorizontal * 20,
+                          ),
+                          child: IconButton(
+                            onPressed: () {
+                              context.read<NoteFormBloc>().add(
+                                    const NoteFormEvent.saved(),
+                                  );
+                              // BodyFieldState().sendAndUpdate();
+                            },
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            icon: const Icon(
+                              FeatherIcons.save,
+                              size: 25,
+                              // color: Colors.blue,
                             ),
-                          );
-                        }),
-                    actions: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: SizeConfig.safeBlockHorizontal * 20,
-                        ),
-                        child: IconButton(
-                          onPressed: () {
-                            context.read<NoteFormBloc>().add(
-                                  const NoteFormEvent.saved(),
-                                );
-                          },
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          icon: const Icon(
-                            FeatherIcons.save,
-                            size: 25,
-                            // color: Colors.blue,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
-      ),
-      body: BlocBuilder<NoteFormBloc, NoteFormState>(
-        buildWhen: (previousState, currentState) =>
-            previousState.showErrorMessages != currentState.showErrorMessages,
-        builder: (context, state) {
-          return ChangeNotifierProvider(
-            create: (_) => FormTodo(),
-            child: Form(
-              // ignore: deprecated_member_use
-              autovalidate: state.showErrorMessages,
-              child: ScrollConfiguration(
-                behavior: MyBehavior(),
-                child: SingleChildScrollView(
-                  // physics: const NeverScrollableScrollPhysics(),
-                  // physics: const BouncingScrollPhysics(),
-                  reverse: true,
-
-                  child: Padding(
-                    padding: EdgeInsets.only(bottom: bottom),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: SizeConfig.blockSizeVertical * 25,
-                        ),
-                        const BodyField(),
-                        SizedBox(
-                          height: SizeConfig.blockSizeVertical * 20,
-                        ),
-                        const TodoList(),
-                        SizedBox(
-                          height: SizeConfig.blockSizeVertical * 10,
-                        ),
-                        const AddTodoTile(),
-                        SizedBox(
-                          height: SizeConfig.blockSizeVertical * 100,
-                        ),
                       ],
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+        body: BlocBuilder<NoteFormBloc, NoteFormState>(
+          buildWhen: (previousState, currentState) =>
+              previousState.showErrorMessages != currentState.showErrorMessages,
+          builder: (context, state) {
+            return ChangeNotifierProvider(
+              create: (_) => FormTodo(),
+              child: Form(
+                // ignore: deprecated_member_use
+                autovalidate: state.showErrorMessages,
+                child: ScrollConfiguration(
+                  behavior: MyBehavior(),
+                  child: SingleChildScrollView(
+                    // physics: const NeverScrollableScrollPhysics(),
+                    // physics: const BouncingScrollPhysics(),
+                    // reverse: true,
+
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: bottom),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: SizeConfig.blockSizeVertical * 25,
+                          ),
+                          const BodyField(),
+                          SizedBox(
+                            height: SizeConfig.blockSizeVertical * 20,
+                          ),
+                          const TodoList(),
+                          SizedBox(
+                            height: SizeConfig.blockSizeVertical * 10,
+                          ),
+                          const AddTodoTile(),
+                          SizedBox(
+                            height: SizeConfig.blockSizeVertical * 100,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
+            );
+          },
+        ),
+        bottomNavigationBar: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Expanded(
+              child: BottomAppBar(
+                elevation: 0,
+                child: ColorField(),
+              ),
             ),
-          );
-        },
+          ],
+        ),
+        extendBody: true,
+        resizeToAvoidBottomInset: false,
       ),
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Expanded(
-            child: BottomAppBar(
-              elevation: 0,
-              child: ColorField(),
-            ),
-          ),
-        ],
-      ),
-      extendBody: true,
-      resizeToAvoidBottomInset: false,
     );
   }
 }

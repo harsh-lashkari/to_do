@@ -14,10 +14,6 @@ import 'package:to_do/presentation/notes/note_overview/widgets/note_overview_bod
 import 'package:to_do/presentation/routes/router.gr.dart';
 import 'package:to_do/shared/color_constants.dart';
 import 'package:to_do/shared/sizeconfig.dart';
-import 'package:to_do/shared/config.dart';
-import 'package:toggle_switch/toggle_switch.dart';
-// import 'package:flutter_icons/flutter_icons.dart';
-// import 'package:ionicons/ionicons.dart';
 
 class NoteOverviewPage extends StatefulWidget {
   @override
@@ -86,7 +82,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage> {
                     padding: EdgeInsets.only(
                       left: SizeConfig.blockSizeHorizontal * 25,
                       right: SizeConfig.blockSizeHorizontal * 25,
-                      top: SizeConfig.blockSizeVertical * 30,
+                      top: SizeConfig.blockSizeVertical * 25,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -196,41 +192,6 @@ class _NoteOverviewPageState extends State<NoteOverviewPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IncompleteSwitch(),
-                        // GestureDetector(
-                        //   onTap: () {},
-                        //   child: Text(
-                        //     'SHOW INCOMPLETE',
-                        //     style: GoogleFonts.roboto(
-                        //       fontSize: 14,
-                        //       fontWeight: FontWeight.bold,
-                        //       color: Colors.blue,
-                        //     ),
-                        //   ),
-                        // ),
-                        // GestureDetector(
-                        //   onTap: () {
-                        //     context
-                        //         .read<AuthBloc>()
-                        //         .add(const AuthEvent.signedOut());
-                        //   },
-                        //   child: Row(
-                        //     children: [
-                        //       Text(
-                        //         'LOGOUT',
-                        //         style: GoogleFonts.roboto(
-                        //           fontSize: 14,
-                        //           fontWeight: FontWeight.bold,
-                        //         ),
-                        //       ),
-                        //       SizedBox(
-                        //         width: SizeConfig.safeBlockHorizontal * 10,
-                        //       ),
-                        //       const Icon(
-                        //         FeatherIcons.logOut,
-                        //       ),
-                        //     ],
-                        //   ),
-                        // )
                       ],
                     ),
                   ),
@@ -289,35 +250,35 @@ Widget buildMenu(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.end,
     crossAxisAlignment: CrossAxisAlignment.end,
     children: [
-      Padding(
-        padding: EdgeInsets.only(
-          top: SizeConfig.safeBlockVertical * 50,
-          right: SizeConfig.safeBlockVertical * 30,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              border: Border.all(
-                color: Colors.white,
-                width: 3,
-              )),
-          child: ToggleSwitch(
-            minWidth: 100.0,
-            // initialLabelIndex: 0,
-            cornerRadius: 20.0,
-            activeFgColor: Colors.white,
-            inactiveBgColor: Colors.white,
-            inactiveFgColor: Colors.black,
-            labels: const ['Light', 'Dark'],
-            icons: const [FeatherIcons.sun, FeatherIcons.moon],
-            activeBgColors: const [Colors.blue, Colors.blue],
-            onToggle: (val) {
-              changeTheme.setTheme(dark: !changeTheme.themeMode);
-              ExtendedNavigator.of(context).replace(Routes.appWidget);
-            },
-          ),
-        ),
-      ),
+      // Padding(
+      //   padding: EdgeInsets.only(
+      //     top: SizeConfig.safeBlockVertical * 50,
+      //     right: SizeConfig.safeBlockVertical * 30,
+      //   ),
+      //   child: Container(
+      //     decoration: BoxDecoration(
+      //         borderRadius: BorderRadius.circular(25),
+      //         border: Border.all(
+      //           color: Colors.white,
+      //           width: 3,
+      //         )),
+      //     child: ToggleSwitch(
+      //       minWidth: 100.0,
+      //       // initialLabelIndex: 0,
+      //       cornerRadius: 20.0,
+      //       activeFgColor: Colors.white,
+      //       inactiveBgColor: Colors.white,
+      //       inactiveFgColor: Colors.black,
+      //       labels: const ['Light', 'Dark'],
+      //       icons: const [FeatherIcons.sun, FeatherIcons.moon],
+      //       activeBgColors: const [Colors.blue, Colors.blue],
+      //       onToggle: (val) {
+      //         changeTheme.setTheme(dark: !changeTheme.themeMode);
+      //         ExtendedNavigator.of(context).replace(Routes.appWidget);
+      //       },
+      //     ),
+      //   ),
+      // ),
       const Spacer(),
       Padding(
         padding: EdgeInsets.only(
