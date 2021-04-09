@@ -201,7 +201,7 @@ class NoteFormPageScaffold extends StatelessWidget {
                           ),
                           const TodoList(),
                           SizedBox(
-                            height: SizeConfig.blockSizeVertical * 10,
+                            height: SizeConfig.blockSizeVertical * 5,
                           ),
                           const AddTodoTile(),
                           SizedBox(

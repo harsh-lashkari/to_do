@@ -151,7 +151,7 @@ class BodyFieldState extends State<BodyField> {
                       ),
             ),
             SizedBox(
-              height: SizeConfig.safeBlockVertical * 30,
+              height: SizeConfig.safeBlockVertical * 20,
             ),
             GestureDetector(
               onTap: () {
